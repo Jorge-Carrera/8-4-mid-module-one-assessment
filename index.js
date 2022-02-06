@@ -26,7 +26,15 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  let totalCount = 0;
+
+  for (let i = 0; i < animals.length; i ++){
+    totalCount += animals[i].count;
+  }
+
+  return totalCount;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,7 +48,15 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  let kindsofAnimals = [];
+
+  for (let i = 0; i < animals.length; i ++){
+    kindsofAnimals.push(animals[i].kind);
+  }
+
+  return kindsofAnimals;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -59,7 +75,17 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+  let minimumCount = [];
+
+  for (let i = 0; i < animals.length; i ++){
+    if (animals[i].count >= minimum){
+      minimumCount.push(animals[i])
+    }
+  }
+
+  return minimumCount
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -73,7 +99,23 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  /* Not entirely sure if I learned this inside or outside of class. 
+  Here, highestCount is set equal to the first index of the animals array. 
+  However, if animals array is an empty array it would not have a first index and therefore return as undefined which is a falsy value. 
+  That is why I have also given highestCount a default value of null using the || operator. 
+  Should the animals array be empty, the value of highestCount becomes null. 
+  */
+  let highestCount = animals[0] || null; 
+
+  for (let i = 0; i < animals.length; i ++){
+      if (animals[i].count > highestCount.count){
+        highestCount = animals[i];
+      }
+    }
+    return highestCount;
+  }
+
 
 // Do not change anything below this line.
 module.exports = {
